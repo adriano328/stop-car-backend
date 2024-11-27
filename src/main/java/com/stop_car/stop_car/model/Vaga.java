@@ -4,6 +4,8 @@ import com.stop_car.stop_car.model.Enum.TipoVagaEnum;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.math.BigDecimal;
+
 @Entity
 @Table(name = "vaga")
 @Data
@@ -22,10 +24,12 @@ public class Vaga {
     @Column(name = "tipovaga")
     private TipoVagaEnum tipoVaga;
 
-    @OneToOne(mappedBy = "vaga")
-    private Ticket ticket;
+    @Column(name = "precohora")
+    private BigDecimal precoHora;
 
-    @ManyToOne
-    @JoinColumn(name = "preco_id")
-    private Preco preco;
+    @Column(name = "precodiaria")
+    private BigDecimal precoDiaria;
+
+    @Column(name = "tempominimoparadiaria")
+    private Integer tempoMinimoParaDiaria;
 }

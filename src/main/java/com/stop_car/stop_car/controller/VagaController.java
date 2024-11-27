@@ -1,8 +1,8 @@
 package com.stop_car.stop_car.controller;
 
-import com.stop_car.stop_car.controller.Dto.PrecoDto.PrecoDto;
-import com.stop_car.stop_car.model.Preco;
-import com.stop_car.stop_car.service.PrecoService;
+import com.stop_car.stop_car.controller.Dto.VagaDto.VagaSaveDto;
+import com.stop_car.stop_car.model.Vaga;
+import com.stop_car.stop_car.service.VagaService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
@@ -13,17 +13,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(value = "preco")
+@RequestMapping(value = "vaga")
 @RequiredArgsConstructor
-public class PrecoController {
+public class VagaController {
 
-    private final PrecoService precoService;
-    private final ModelMapper modelMapper;
+    private VagaService vagaService;
+    private ModelMapper modelMapper;
 
     @PostMapping
-    ResponseEntity<PrecoDto> salvarPreco (@RequestBody PrecoDto precoDto) {
-        precoService.salvarPreco(modelMapper.map(precoDto, Preco.class));
+    ResponseEntity<VagaSaveDto> criarVaga(@RequestBody VagaSaveDto vagaSaveDto) {
+        vagaService.criarVaga(modelMapper.map(vagaSaveDto, Vaga.class));
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
+
+
 
 }
