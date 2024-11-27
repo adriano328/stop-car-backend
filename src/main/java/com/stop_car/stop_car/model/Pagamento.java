@@ -17,7 +17,7 @@ public class Pagamento {
     private Long id;
 
     @OneToOne
-    @JoinColumn(name = "ticket_id")
+    @JoinColumn(name = "vaga_id")
     private Vaga vaga;
 
     @Column(name = "formapagamento")
@@ -28,4 +28,8 @@ public class Pagamento {
 
     @Column(name = "status")
     private StatusPagamento statusPagamento;
+
+    @OneToOne
+    @JoinColumn(name = "ticket_id")
+    private Ticket ticket;
 }
