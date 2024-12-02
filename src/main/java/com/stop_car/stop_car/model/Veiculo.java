@@ -25,8 +25,5 @@ public class Veiculo {
 
     @Column(name = "marca")
     private String marca;
-
-    @OneToMany(mappedBy = "veiculo")
-    private Set<Ticket> tickets;
-
+    
 }

@@ -16,13 +16,13 @@ public class Vaga {
     private Long id;
 
     @Column(name = "numero")
-    private String numero;
+    private Long numero;
 
     @Column(name = "ocupada")
     private Boolean ocupada;
 
     @Column(name = "tipovaga")
-    private TipoVagaEnum tipoVaga;
+    private String tipoVaga;
 
     @Column(name = "precohora")
     private BigDecimal precoHora;
