@@ -11,6 +11,7 @@ public class VagaDto {
     private Long numero;
     private Boolean ocupada;
     private TipoVagaEnum tipoVaga;
+    private String tipoVeiculo;
     private BigDecimal precoHora;
     private BigDecimal precoDiaria;
     private Integer tempoMinimoParaDiaria;

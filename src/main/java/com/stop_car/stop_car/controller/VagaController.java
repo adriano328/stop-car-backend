@@ -32,9 +32,9 @@ public class VagaController {
     public ResponseEntity<List<VagaDto>> retornaTodasAsVagas(
             @RequestParam(required = false) Long numero,
             @RequestParam(required = false) Boolean ocupada,
-            @RequestParam(required = false) String tipoVaga) {
-
-        List<Vaga> vagas = vagaService.listarTodasVagas(numero, ocupada, tipoVaga);
+            @RequestParam(required = false) String tipoVaga,
+            @RequestParam(required = false) String tipoVeiculo) {
+        List<Vaga> vagas = vagaService.listarTodasVagas(numero, ocupada, tipoVaga, tipoVeiculo);
         List<VagaDto> vagaDtos = vagas.stream()
                 .map(vaga -> modelMapper.map(vaga, VagaDto.class))
                 .collect(Collectors.toList());

@@ -24,6 +24,9 @@ public class Vaga {
     @Column(name = "tipovaga")
     private String tipoVaga;
 
+    @Column(name = "tipoveiculo")
+    private String tipoVeiculo;
+
     @Column(name = "precohora")
     private BigDecimal precoHora;
 

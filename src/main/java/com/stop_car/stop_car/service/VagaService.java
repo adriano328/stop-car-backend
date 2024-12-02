@@ -18,8 +18,8 @@ public class VagaService {
        return vagaRepository.save(vaga);
     }
 
-    public List<Vaga> listarTodasVagas(Long numero, Boolean ocupada, String tipoVaga) {
-        return vagaRepository.findVagaByNumeroAndOcupadaAndTipoVaga(numero, ocupada, tipoVaga);
+    public List<Vaga> listarTodasVagas(Long numero, Boolean ocupada, String tipoVaga, String tipoVeiculo) {
+        return vagaRepository.findVagaByNumeroAndOcupadaAndTipoVagaAndTipoVeiculo(numero, ocupada, tipoVaga, tipoVeiculo);
     }
 
 }
