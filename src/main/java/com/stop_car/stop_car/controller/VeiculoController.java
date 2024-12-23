@@ -1,8 +1,10 @@
 package com.stop_car.stop_car.controller;
 
 import com.stop_car.stop_car.controller.Dto.VeiculoDto.VeiculoDto;
+import com.stop_car.stop_car.exception.VeiculoJaCadastradoException;
 import com.stop_car.stop_car.model.Veiculo;
 import com.stop_car.stop_car.repository.VeiculoRepository;
+import com.stop_car.stop_car.service.VeiculoService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
@@ -17,14 +19,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class VeiculoController {
 
-    private final VeiculoRepository veiculoRepository;
+    private final VeiculoService veiculoService;
     private final ModelMapper modelMapper;
 
     @PostMapping
-    ResponseEntity<VeiculoDto> armazenarVeiculo(@RequestBody VeiculoDto veiculoDto) {
-        veiculoRepository.save(modelMapper.map(veiculoDto, Veiculo.class));
-        return new ResponseEntity<>(HttpStatus.CREATED);
+    ResponseEntity<?> armazenarVeiculo(@RequestBody VeiculoDto veiculoDto) {
+            veiculoService.armazenarVeiculo(modelMapper.map(veiculoDto, Veiculo.class));
+            return new ResponseEntity<>(HttpStatus.CREATED);
     }
-
-
 }

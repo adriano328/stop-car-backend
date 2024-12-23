@@ -1,5 +1,6 @@
 package com.stop_car.stop_car.service;
 
+import com.stop_car.stop_car.exception.VeiculoJaCadastradoException;
 import com.stop_car.stop_car.model.Veiculo;
 import com.stop_car.stop_car.repository.VeiculoRepository;
 import lombok.RequiredArgsConstructor;
@@ -12,6 +13,11 @@ public class VeiculoService {
     private final VeiculoRepository veiculoRepository;
 
     public Veiculo armazenarVeiculo(Veiculo veiculo) {
-       return veiculoRepository.save(veiculo);
+        if(veiculoRepository.existsByPlaca(veiculo.getPlaca())) {
+            throw new VeiculoJaCadastradoException("Já existe um veículo cadastrado com essa placa.");
+        }
+        return veiculoRepository.save(veiculo);
     }
+
+
 }

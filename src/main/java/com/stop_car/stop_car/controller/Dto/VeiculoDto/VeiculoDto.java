@@ -9,4 +9,6 @@ public class VeiculoDto {
     private String modelo;
     private String cor;
     private String marca;
+    private String ano;
+    private String categoria;
 }
