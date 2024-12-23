@@ -12,13 +12,16 @@ import java.util.List;
 @Repository
 public interface VagaRepository extends JpaRepository<Vaga, Long> {
     @Query("SELECT v FROM Vaga v WHERE " +
-            "(:numero IS NULL OR v.numero = :numero) AND " +
-            "(:ocupada IS NULL OR v.ocupada = :ocupada) AND " +
-            "(:tipoVaga IS NULL OR v.tipoVaga = :tipoVaga) AND " +
-            "(:tipoVeiculo IS NULL OR v.tipoVeiculo = :tipoVeiculo)")
-    List<Vaga> findVagaByNumeroAndOcupadaAndTipoVagaAndTipoVeiculo(@Param("numero") Long numero,
-                                                                   @Param("ocupada") Boolean ocupada,
-                                                                   @Param("tipoVaga") String tipoVaga,
-                                                                   @Param("tipoVeiculo") String tipoVeiculo);
+            "(:numero IS NULL OR v.numero = :numero) " +
+            "AND (:ocupada IS NULL OR v.ocupada = :ocupada) " +
+            "AND (:tipoVaga IS NULL OR v.tipoVaga = :tipoVaga) " +
+            "AND (:tipoVeiculo IS NULL OR v.tipoVeiculo = :tipoVeiculo)")
+    List<Vaga> findVagaByNumeroAndOcupadaAndTipoVagaAndTipoVeiculo(
+            @Param("numero") Long numero,
+            @Param("ocupada") Boolean ocupada,
+            @Param("tipoVaga") String tipoVaga,
+            @Param("tipoVeiculo") String tipoVeiculo);
+
+
 
 }

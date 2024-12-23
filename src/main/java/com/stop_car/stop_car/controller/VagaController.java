@@ -17,6 +17,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping(value = "vaga")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 public class VagaController {
 
     private final VagaService vagaService;
@@ -29,17 +30,13 @@ public class VagaController {
     }
 
     @GetMapping("/retorna-todas-vagas")
-    public ResponseEntity<List<VagaDto>> retornaTodasAsVagas(
+    public ResponseEntity<List<Vaga>> listarTodasVagas(
             @RequestParam(required = false) Long numero,
             @RequestParam(required = false) Boolean ocupada,
             @RequestParam(required = false) String tipoVaga,
             @RequestParam(required = false) String tipoVeiculo) {
         List<Vaga> vagas = vagaService.listarTodasVagas(numero, ocupada, tipoVaga, tipoVeiculo);
-        List<VagaDto> vagaDtos = vagas.stream()
-                .map(vaga -> modelMapper.map(vaga, VagaDto.class))
-                .collect(Collectors.toList());
-
-        return ResponseEntity.ok(vagaDtos);
+        return ResponseEntity.ok(vagas);
     }
 
 

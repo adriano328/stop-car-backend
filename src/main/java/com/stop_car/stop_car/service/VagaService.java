@@ -19,7 +19,13 @@ public class VagaService {
     }
 
     public List<Vaga> listarTodasVagas(Long numero, Boolean ocupada, String tipoVaga, String tipoVeiculo) {
-        return vagaRepository.findVagaByNumeroAndOcupadaAndTipoVagaAndTipoVeiculo(numero, ocupada, tipoVaga, tipoVeiculo);
+        return vagaRepository.findVagaByNumeroAndOcupadaAndTipoVagaAndTipoVeiculo(
+                numero != null && !numero.toString().isEmpty() ? numero : null,
+                ocupada,
+                tipoVaga != null && !tipoVaga.isEmpty() ? tipoVaga : null,
+                tipoVeiculo != null && !tipoVeiculo.isEmpty() ? tipoVeiculo : null
+        );
     }
+
 
 }
